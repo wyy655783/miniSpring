@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * @program: miniSpring
  * @description: 读取xml中Bean信息
- * @author: wyh
+ * @author: wyh1
  * @create: 2023-03-14 15:09
  **/
 public class ClassPathXmlApplicationContext implements BeanFactory {
