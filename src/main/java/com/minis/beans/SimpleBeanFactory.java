@@ -30,7 +30,7 @@ public class SimpleBeanFactory implements BeanFactory{
         if (singleton==null){
             int i = beanNames.indexOf(beanName);
             if (i==-1){
-                return new BeansException();
+                throw  new BeansException();
             }else {
                 //获取Bean的定义
                 BeanDefinition beanDefinition = beanDefinitions.get(i);
