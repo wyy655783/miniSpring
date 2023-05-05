@@ -23,10 +23,10 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
 
     public ClassPathXmlApplicationContext(String fileName) {
         Resource resource = new ClassPathXmlResource(fileName);
-        BeanFactory beanFactory = new SimpleBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+        SimpleBeanFactory simpleBeanFactory = new SimpleBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(simpleBeanFactory);
         reader.loadBeanDefinitions(resource);
-        this.beanFactory = beanFactory;
+        this.beanFactory = simpleBeanFactory;
     }
 
     @Override
@@ -35,9 +35,19 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
     }
 
     @Override
-    public void registerBeanDefinition(BeanDefinition beanDefinition) {
-        this.beanFactory.registerBeanDefinition(beanDefinition);
+    public Boolean containsBean(String name) {
+        return this.beanFactory.containsBean(name);
     }
+
+    @Override
+    public void registerBean(String beanName, Object obj) {
+        this.beanFactory.registerBean(beanName,obj);
+    }
+
+
+//    public void registerBeanDefinition(BeanDefinition beanDefinition) {
+//        this.beanFactory.registerBeanDefinition(beanDefinition);
+//    }
 //    private List<BeanDefinition> beanDefinitions=new ArrayList<>();
 //    private Map<String, Object> singletons= new HashMap<>();
 //
